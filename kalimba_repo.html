@@ -1,0 +1,1646 @@
+<!DOCTYPE html>
+<!-- saved from url=(0063)https://8080-i5edfme1ss44udy6r5zu5-fdcc1d06.sg1.manus.computer/ -->
+<html lang="ja"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カリンバアプリ 競合50社 市場分析レポート</title>
+  <script src="./kalimba_repo_files/chart.umd.min.js"></script>
+  <script src="./kalimba_repo_files/chartjs-plugin-datalabels.min.js"></script>
+  <style>
+    :root {
+      --primary: #6C63FF;
+      --primary-light: #A89CFF;
+      --secondary: #FF6584;
+      --accent: #43D9AD;
+      --accent2: #FFB347;
+      --bg: #F4F6FB;
+      --card: #FFFFFF;
+      --text: #2D2D44;
+      --text-muted: #7B7B9A;
+      --border: #E3E6F0;
+      --shadow: 0 4px 24px rgba(108,99,255,0.08);
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    /* HEADER */
+    header {
+      background: linear-gradient(135deg, #6C63FF 0%, #43D9AD 100%);
+      color: #fff;
+      padding: 48px 32px 36px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 260px; height: 260px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -40px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+    }
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.05rem;
+      opacity: 0.88;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .header-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 20px;
+      padding: 4px 16px;
+      font-size: 0.82rem;
+      margin-bottom: 14px;
+      letter-spacing: 0.5px;
+    }
+    /* NAV TABS */
+    .nav-tabs {
+      display: flex;
+      gap: 8px;
+      padding: 20px 32px 0;
+      border-bottom: 2px solid var(--border);
+      background: var(--card);
+      overflow-x: auto;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+    .nav-tab {
+      padding: 12px 22px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      border-bottom: 3px solid transparent;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .nav-tab:hover { color: var(--primary); }
+    .nav-tab.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+    /* SECTIONS */
+    .section { display: none; padding: 32px; }
+    .section.active { display: block; }
+    /* KPI CARDS */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 18px;
+      margin-bottom: 32px;
+    }
+    .kpi-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 22px 20px;
+      box-shadow: var(--shadow);
+      text-align: center;
+      border-top: 4px solid var(--primary);
+      transition: transform 0.2s;
+    }
+    .kpi-card:hover { transform: translateY(-3px); }
+    .kpi-card:nth-child(2) { border-top-color: var(--secondary); }
+    .kpi-card:nth-child(3) { border-top-color: var(--accent); }
+    .kpi-card:nth-child(4) { border-top-color: var(--accent2); }
+    .kpi-card:nth-child(5) { border-top-color: #5BC0EB; }
+    .kpi-value {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1;
+    }
+    .kpi-card:nth-child(2) .kpi-value { color: var(--secondary); }
+    .kpi-card:nth-child(3) .kpi-value { color: var(--accent); }
+    .kpi-card:nth-child(4) .kpi-value { color: var(--accent2); }
+    .kpi-card:nth-child(5) .kpi-value { color: #5BC0EB; }
+    .kpi-label {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+      font-weight: 500;
+    }
+    /* CHART GRID */
+    .chart-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    .chart-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+    .chart-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .chart-card h3 .icon {
+      width: 28px; height: 28px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem;
+    }
+    .chart-container { position: relative; height: 260px; }
+    .chart-container.tall { height: 320px; }
+    /* TABLE */
+    .table-controls {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+      align-items: center;
+    }
+    .search-box {
+      flex: 1;
+      min-width: 200px;
+      padding: 10px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-size: 0.92rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .search-box:focus { border-color: var(--primary); }
+    .filter-select {
+      padding: 10px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-size: 0.92rem;
+      outline: none;
+      background: var(--card);
+      cursor: pointer;
+    }
+    .filter-select:focus { border-color: var(--primary); }
+    .table-wrap {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    thead th {
+      background: linear-gradient(135deg, #6C63FF, #A89CFF);
+      color: #fff;
+      padding: 14px 16px;
+      text-align: left;
+      font-weight: 700;
+      white-space: nowrap;
+      cursor: pointer;
+      user-select: none;
+    }
+    thead th:hover { background: linear-gradient(135deg, #5a52e0, #9080f0); }
+    thead th .sort-icon { margin-left: 4px; opacity: 0.7; }
+    tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+    }
+    tbody tr:hover { background: #F0EEFF; }
+    tbody td { padding: 12px 16px; vertical-align: middle; }
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .badge-free { background: #E8F9F0; color: #1DB954; }
+    .badge-paid { background: #FFF0F3; color: #E0245E; }
+    .badge-freemium { background: #EEF0FF; color: #6C63FF; }
+    .badge-sub { background: #FFF8E7; color: #F59E0B; }
+    .badge-cat {
+      background: #F0F4FF;
+      color: #4B5EAA;
+      font-size: 0.72rem;
+    }
+    .platform-icons { display: flex; gap: 4px; }
+    .platform-icon {
+      width: 22px; height: 22px;
+      border-radius: 5px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+    .ios-icon { background: #E8E8FF; color: #6C63FF; }
+    .android-icon { background: #E8F9F0; color: #1DB954; }
+    .web-icon { background: #FFF0F3; color: #E0245E; }
+    .stars {
+      color: #F59E0B;
+      font-size: 0.85rem;
+    }
+    .rating-num {
+      font-weight: 700;
+      color: var(--text);
+      font-size: 0.9rem;
+    }
+    /* POSITIONING MAP */
+    .positioning-section { margin-bottom: 32px; }
+    .positioning-section h2 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    .positioning-section p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      margin-bottom: 20px;
+    }
+    /* INSIGHT CARDS */
+    .insight-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+      margin-bottom: 32px;
+    }
+    .insight-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+      border-left: 4px solid var(--primary);
+    }
+    .insight-card:nth-child(2) { border-left-color: var(--secondary); }
+    .insight-card:nth-child(3) { border-left-color: var(--accent); }
+    .insight-card:nth-child(4) { border-left-color: var(--accent2); }
+    .insight-card h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--primary);
+    }
+    .insight-card:nth-child(2) h4 { color: var(--secondary); }
+    .insight-card:nth-child(3) h4 { color: var(--accent); }
+    .insight-card:nth-child(4) h4 { color: var(--accent2); }
+    .insight-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    /* SECTION TITLE */
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      margin-bottom: 24px;
+    }
+    /* OPPORTUNITY */
+    .opportunity-card {
+      background: linear-gradient(135deg, #6C63FF 0%, #43D9AD 100%);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+    .opportunity-card h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .opportunity-card ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+    }
+    .opportunity-card ul li {
+      background: rgba(255,255,255,0.15);
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .opportunity-card ul li::before {
+      content: '✓';
+      font-weight: 800;
+      font-size: 1rem;
+    }
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 24px;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      border-top: 1px solid var(--border);
+    }
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.5rem; }
+      .section { padding: 16px; }
+      .chart-grid { grid-template-columns: 1fr; }
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    /* TOOLTIP CUSTOM */
+    .tooltip-custom {
+      position: fixed;
+      background: rgba(44,44,68,0.95);
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      pointer-events: none;
+      z-index: 9999;
+      max-width: 260px;
+      line-height: 1.5;
+      display: none;
+    }
+    /* SCATTER LEGEND */
+    .scatter-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .scatter-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+    .scatter-legend-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+    }
+    /* PROGRESS BAR */
+    .progress-bar-wrap { margin-bottom: 12px; }
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+    .progress-bar {
+      height: 8px;
+      background: var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      border-radius: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-light));
+      transition: width 1s ease;
+    }
+    /* HIGHLIGHT */
+    .highlight-row { background: #FFF8E7 !important; }
+    /* PAGINATION */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .page-btn {
+      padding: 7px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      background: var(--card);
+      cursor: pointer;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+    .page-btn:hover, .page-btn.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+    .result-count {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-badge">📊 競合分析レポート 2025-2026</div>
+  <h1>🎵 カリンバアプリ 競合50社 市場分析</h1>
+  <p>価格・機能・市場ポジショニングの観点から、スマホカリンバアプリの競合環境を徹底分析</p>
+</header>
+
+<nav class="nav-tabs">
+  <button class="nav-tab" onclick="showSection(&#39;overview&#39;)">📈 概要・KPI</button>
+  <button class="nav-tab" onclick="showSection(&#39;charts&#39;)">📊 チャート分析</button>
+  <button class="nav-tab" onclick="showSection(&#39;positioning&#39;)">🗺️ ポジショニング</button>
+  <button class="nav-tab active" onclick="showSection(&#39;table&#39;)">📋 競合一覧</button>
+  <button class="nav-tab" onclick="showSection(&#39;insights&#39;)">💡 戦略インサイト</button>
+</nav>
+
+<!-- SECTION 1: OVERVIEW -->
+<section id="overview" class="section">
+  <div class="section-title">市場概要 &amp; KPI</div>
+  <div class="section-subtitle">カリンバアプリ市場における主要指標のサマリー</div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value">50</div>
+      <div class="kpi-label">分析対象アプリ数</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">62%</div>
+      <div class="kpi-label">無料・フリーミアム比率</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">4.3</div>
+      <div class="kpi-label">平均評価スコア（5点満点）</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">5</div>
+      <div class="kpi-label">主要カテゴリ数</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">$0〜$33</div>
+      <div class="kpi-label">価格帯レンジ</div>
+    </div>
+  </div>
+
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3><span class="icon">📦</span> カテゴリ別分布</h3>
+      <div class="chart-container">
+        <canvas id="categoryChart" width="0" height="0" style="display: block; box-sizing: border-box; height: 0px; width: 0px;"></canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <h3><span class="icon">💰</span> 収益モデル別分布</h3>
+      <div class="chart-container">
+        <canvas id="monetizationChart" width="0" height="0" style="display: block; box-sizing: border-box; height: 0px; width: 0px;"></canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <h3><span class="icon">📱</span> プラットフォーム対応状況</h3>
+      <div class="chart-container">
+        <canvas id="platformChart" width="0" height="0" style="display: block; box-sizing: border-box; height: 0px; width: 0px;"></canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <h3><span class="icon">⭐</span> カテゴリ別平均評価</h3>
+      <div class="chart-container">
+        <canvas id="ratingChart" width="0" height="0" style="display: block; box-sizing: border-box; height: 0px; width: 0px;"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="chart-card" style="margin-bottom:24px;">
+    <h3><span class="icon">🏆</span> ダウンロード数 TOP 10 アプリ</h3>
+    <div class="chart-container tall">
+      <canvas id="downloadsChart" width="0" height="0" style="display: block; box-sizing: border-box; height: 0px; width: 0px;"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: CHARTS -->
+<section id="charts" class="section">
+  <div class="section-title">詳細チャート分析</div>
+  <div class="section-subtitle">価格帯・機能・評価の多角的な視覚化</div>
+
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3><span class="icon">💵</span> 価格帯分布（有料アプリ）</h3>
+      <div class="chart-container">
+        <canvas id="priceDistChart" height="0" style="display: block; box-sizing: border-box; height: 0px; width: 0px;" width="0"></canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <h3><span class="icon">🎯</span> ターゲット層別分布</h3>
+      <div class="chart-container">
+        <canvas id="targetChart" height="0" style="display: block; box-sizing: border-box; height: 0px; width: 0px;" width="0"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="chart-card" style="margin-bottom:24px;">
+    <h3><span class="icon">🔑</span> 主要機能の搭載率（全50アプリ）</h3>
+    <div id="featureProgress">
+      <div class="progress-bar-wrap">
+        <div class="progress-label"><span>バーチャル演奏機能</span><span>16/50アプリ (32%)</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:32%; background: linear-gradient(90deg, #6C63FF, #6C63FF99);"></div></div>
+      </div>
+      <div class="progress-bar-wrap">
+        <div class="progress-label"><span>学習・レッスン機能</span><span>15/50アプリ (30%)</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:30%; background: linear-gradient(90deg, #43D9AD, #43D9AD99);"></div></div>
+      </div>
+      <div class="progress-bar-wrap">
+        <div class="progress-label"><span>タブ譜ライブラリ</span><span>13/50アプリ (26%)</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:26%; background: linear-gradient(90deg, #FF6584, #FF658499);"></div></div>
+      </div>
+      <div class="progress-bar-wrap">
+        <div class="progress-label"><span>チューナー機能</span><span>10/50アプリ (20%)</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:20%; background: linear-gradient(90deg, #FFB347, #FFB34799);"></div></div>
+      </div>
+      <div class="progress-bar-wrap">
+        <div class="progress-label"><span>録音機能</span><span>6/50アプリ (12%)</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:12%; background: linear-gradient(90deg, #5BC0EB, #5BC0EB99);"></div></div>
+      </div>
+      <div class="progress-bar-wrap">
+        <div class="progress-label"><span>ゲーミフィケーション</span><span>6/50アプリ (12%)</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:12%; background: linear-gradient(90deg, #A89CFF, #A89CFF99);"></div></div>
+      </div>
+      <div class="progress-bar-wrap">
+        <div class="progress-label"><span>AI・音声認識</span><span>4/50アプリ (8%)</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:8%; background: linear-gradient(90deg, #FF9F7F, #FF9F7F99);"></div></div>
+      </div>
+      <div class="progress-bar-wrap">
+        <div class="progress-label"><span>広告なし</span><span>2/50アプリ (4%)</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:4%; background: linear-gradient(90deg, #7FD9C0, #7FD9C099);"></div></div>
+      </div>
+      <div class="progress-bar-wrap">
+        <div class="progress-label"><span>実機連携</span><span>2/50アプリ (4%)</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:4%; background: linear-gradient(90deg, #FFD080, #FFD08099);"></div></div>
+      </div>
+      <div class="progress-bar-wrap">
+        <div class="progress-label"><span>コミュニティ機能</span><span>1/50アプリ (2%)</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:2%; background: linear-gradient(90deg, #90D5F5, #90D5F599);"></div></div>
+      </div></div>
+  </div>
+
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3><span class="icon">📊</span> 月額サブスクリプション価格比較</h3>
+      <div class="chart-container">
+        <canvas id="subPriceChart" height="0" style="display: block; box-sizing: border-box; height: 0px; width: 0px;" width="0"></canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <h3><span class="icon">🌍</span> 開発者の地域分布</h3>
+      <div class="chart-container">
+        <canvas id="devRegionChart" height="0" style="display: block; box-sizing: border-box; height: 0px; width: 0px;" width="0"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: POSITIONING -->
+<section id="positioning" class="section">
+  <div class="section-title">市場ポジショニングマップ</div>
+  <div class="section-subtitle">「機能の豊富さ」と「価格」の2軸でアプリを分類</div>
+
+  <div class="chart-card" style="margin-bottom:24px;">
+    <h3><span class="icon">🗺️</span> ポジショニングマップ（機能性 vs 価格）</h3>
+    <div class="chart-container" style="height:420px;">
+      <canvas id="positioningChart" height="0" style="display: block; box-sizing: border-box; height: 0px; width: 0px;" width="0"></canvas>
+    </div>
+    <div class="scatter-legend" id="scatterLegend"></div>
+  </div>
+
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3><span class="icon">🎪</span> 市場セグメント別アプリ数</h3>
+      <div class="chart-container">
+        <canvas id="segmentChart" height="0" style="display: block; box-sizing: border-box; height: 0px; width: 0px;" width="0"></canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <h3><span class="icon">⚡</span> 競合強度マトリクス</h3>
+      <div class="chart-container">
+        <canvas id="competitionChart" height="0" style="display: block; box-sizing: border-box; height: 0px; width: 0px;" width="0"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="chart-card">
+    <h3><span class="icon">🔍</span> カテゴリ別 評価 vs ダウンロード数</h3>
+    <div class="chart-container" style="height:340px;">
+      <canvas id="ratingDownloadChart" height="0" style="display: block; box-sizing: border-box; height: 0px; width: 0px;" width="0"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: TABLE -->
+<section id="table" class="section active">
+  <div class="section-title">競合アプリ一覧（50社）</div>
+  <div class="section-subtitle">フィルター・検索・ソートで自由にデータを探索できます</div>
+
+  <div class="table-controls">
+    <input type="text" class="search-box" id="searchBox" placeholder="🔍 アプリ名・開発者・機能で検索..." oninput="filterTable()">
+    <select class="filter-select" id="categoryFilter" onchange="filterTable()">
+      <option value="">全カテゴリ</option>
+      <option value="バーチャル楽器">バーチャル楽器</option>
+      <option value="チューナー">チューナー</option>
+      <option value="学習">学習</option>
+      <option value="楽器学習">楽器学習</option>
+      <option value="音楽制作">音楽制作</option>
+      <option value="楽譜">楽譜</option>
+    </select>
+    <select class="filter-select" id="pricingFilter" onchange="filterTable()">
+      <option value="">全価格モデル</option>
+      <option value="無料">無料</option>
+      <option value="フリーミアム">フリーミアム</option>
+      <option value="有料">有料</option>
+      <option value="サブスクリプション">サブスクリプション</option>
+    </select>
+    <select class="filter-select" id="platformFilter" onchange="filterTable()">
+      <option value="">全プラットフォーム</option>
+      <option value="iOS">iOS</option>
+      <option value="Android">Android</option>
+    </select>
+  </div>
+  <div class="result-count" id="resultCount">50件中 1〜10件を表示</div>
+
+  <div class="table-wrap">
+    <table id="competitorTable">
+      <thead>
+        <tr>
+          <th onclick="sortTable(0)">#<span class="sort-icon">↕</span></th>
+          <th onclick="sortTable(1)">アプリ名<span class="sort-icon">↕</span></th>
+          <th onclick="sortTable(2)">カテゴリ<span class="sort-icon">↕</span></th>
+          <th onclick="sortTable(3)">価格モデル<span class="sort-icon">↕</span></th>
+          <th onclick="sortTable(4)">価格<span class="sort-icon">↕</span></th>
+          <th onclick="sortTable(5)">評価<span class="sort-icon">↕</span></th>
+          <th onclick="sortTable(6)">DL数<span class="sort-icon">↕</span></th>
+          <th>プラットフォーム</th>
+          <th>ターゲット</th>
+          <th>主要機能</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+    <tr>
+      <td><strong>1</strong></td>
+      <td><strong>Keylimba</strong><br><small style="color:var(--text-muted)">dvdfu</small></td>
+      <td><span class="badge badge-cat">バーチャル楽器</span></td>
+      <td><span class="badge badge-freemium">フリーミアム</span></td>
+      <td><strong>$2.99(追加音源)</strong></td>
+      <td><span class="rating-num">4.8</span> <span class="stars">★★★★½</span></td>
+      <td>10M+</td>
+      <td><div class="platform-icons"><span class="platform-icon ios-icon">iOS</span><span class="platform-icon android-icon">And</span></div></td>
+      <td><small>初心者〜中級者</small></td>
+      <td><small style="color:var(--text-muted)">バーチャル演奏、ループ録音、カスタマイズ...</small></td>
+    </tr>
+    <tr>
+      <td><strong>2</strong></td>
+      <td><strong>Kalimba Connect</strong><br><small style="color:var(--text-muted)">SSN Publishing</small></td>
+      <td><span class="badge badge-cat">バーチャル楽器・学習</span></td>
+      <td><span class="badge badge-freemium">フリーミアム</span></td>
+      <td><strong>広告+IAP</strong></td>
+      <td><span class="rating-num">4.7</span> <span class="stars">★★★★½</span></td>
+      <td>500K+</td>
+      <td><div class="platform-icons"><span class="platform-icon ios-icon">iOS</span><span class="platform-icon android-icon">And</span></div></td>
+      <td><small>初心者〜中級者</small></td>
+      <td><small style="color:var(--text-muted)">バーチャル演奏、タブ譜65万曲、デイリーチャレンジ...</small></td>
+    </tr>
+    <tr>
+      <td><strong>3</strong></td>
+      <td><strong>Kalimba Master</strong><br><small style="color:var(--text-muted)">Sensor Notes Global</small></td>
+      <td><span class="badge badge-cat">バーチャル楽器・学習</span></td>
+      <td><span class="badge badge-freemium">フリーミアム</span></td>
+      <td><strong>広告+IAP</strong></td>
+      <td><span class="rating-num">4.2</span> <span class="stars">★★★★☆</span></td>
+      <td>100K+</td>
+      <td><div class="platform-icons"><span class="platform-icon ios-icon">iOS</span><span class="platform-icon android-icon">And</span></div></td>
+      <td><small>初心者</small></td>
+      <td><small style="color:var(--text-muted)">バーチャル演奏、タブ譜、レッスン...</small></td>
+    </tr>
+    <tr>
+      <td><strong>4</strong></td>
+      <td><strong>Real Kalimba</strong><br><small style="color:var(--text-muted)">Budali Kingsley</small></td>
+      <td><span class="badge badge-cat">バーチャル楽器・学習</span></td>
+      <td><span class="badge badge-freemium">フリーミアム</span></td>
+      <td><strong>$3.99(プレミアム)</strong></td>
+      <td><span class="rating-num">4.3</span> <span class="stars">★★★★☆</span></td>
+      <td>1M+</td>
+      <td><div class="platform-icons"><span class="platform-icon ios-icon">iOS</span><span class="platform-icon android-icon">And</span></div></td>
+      <td><small>初心者</small></td>
+      <td><small style="color:var(--text-muted)">フォーリングノート、タブ譜、録音...</small></td>
+    </tr>
+    <tr>
+      <td><strong>5</strong></td>
+      <td><strong>Jooleer Kalimba</strong><br><small style="color:var(--text-muted)">杭州点音教育</small></td>
+      <td><span class="badge badge-cat">バーチャル楽器・学習</span></td>
+      <td><span class="badge badge-sub">サブスクリプション</span></td>
+      <td><strong>$4.99/月</strong></td>
+      <td><span class="rating-num">4.1</span> <span class="stars">★★★★☆</span></td>
+      <td>100K+</td>
+      <td><div class="platform-icons"><span class="platform-icon ios-icon">iOS</span><span class="platform-icon android-icon">And</span></div></td>
+      <td><small>初心者〜中級者</small></td>
+      <td><small style="color:var(--text-muted)">チューナー、ソングライブラリ、デイリー練習...</small></td>
+    </tr>
+    <tr>
+      <td><strong>6</strong></td>
+      <td><strong>Smart Kalimba</strong><br><small style="color:var(--text-muted)">CookAndroid</small></td>
+      <td><span class="badge badge-cat">チューナー・バーチャル楽器</span></td>
+      <td><span class="badge badge-freemium">フリーミアム</span></td>
+      <td><strong>コード付属</strong></td>
+      <td><span class="rating-num">4.3</span> <span class="stars">★★★★☆</span></td>
+      <td>100K+</td>
+      <td><div class="platform-icons"><span class="platform-icon ios-icon">iOS</span><span class="platform-icon android-icon">And</span></div></td>
+      <td><small>実機ユーザー</small></td>
+      <td><small style="color:var(--text-muted)">精密チューナー、プロ音源、バーチャル演奏</small></td>
+    </tr>
+    <tr>
+      <td><strong>7</strong></td>
+      <td><strong>Kalimbeo</strong><br><small style="color:var(--text-muted)">Kalimbeo</small></td>
+      <td><span class="badge badge-cat">タブ譜ライブラリ</span></td>
+      <td><span class="badge badge-free">無料</span></td>
+      <td><strong>無料</strong></td>
+      <td><span class="rating-num">4.4</span> <span class="stars">★★★★☆</span></td>
+      <td>50K+</td>
+      <td><div class="platform-icons"><span class="platform-icon ios-icon">iOS</span><span class="platform-icon android-icon">And</span></div></td>
+      <td><small>初心者〜上級者</small></td>
+      <td><small style="color:var(--text-muted)">タブ譜ライブラリ、難易度別、保存機能...</small></td>
+    </tr>
+    <tr>
+      <td><strong>8</strong></td>
+      <td><strong>Kalimba Pro</strong><br><small style="color:var(--text-muted)">MWM</small></td>
+      <td><span class="badge badge-cat">バーチャル楽器</span></td>
+      <td><span class="badge badge-paid">有料</span></td>
+      <td><strong>$2.99</strong></td>
+      <td><span class="rating-num">4.5</span> <span class="stars">★★★★½</span></td>
+      <td>10K+</td>
+      <td><div class="platform-icons"><span class="platform-icon ios-icon">iOS</span></div></td>
+      <td><small>リラクゼーション</small></td>
+      <td><small style="color:var(--text-muted)">カリンバ・サンスラ、リバーブ、録音...</small></td>
+    </tr>
+    <tr>
+      <td><strong>9</strong></td>
+      <td><strong>Kalimba Real (Sonoscore)</strong><br><small style="color:var(--text-muted)">Sonoscore</small></td>
+      <td><span class="badge badge-cat">バーチャル楽器・タブ譜</span></td>
+      <td><span class="badge badge-free">無料</span></td>
+      <td><strong>無料</strong></td>
+      <td><span class="rating-num">4.4</span> <span class="stars">★★★★☆</span></td>
+      <td>500K+</td>
+      <td><div class="platform-icons"><span class="platform-icon android-icon">And</span></div></td>
+      <td><small>中級者〜上級者</small></td>
+      <td><small style="color:var(--text-muted)">タブ譜、ユーザー作成、MIDI/PDFエクスポート</small></td>
+    </tr>
+    <tr>
+      <td><strong>10</strong></td>
+      <td><strong>Joo Kalimba</strong><br><small style="color:var(--text-muted)">Sensor Notes Global</small></td>
+      <td><span class="badge badge-cat">バーチャル楽器・学習</span></td>
+      <td><span class="badge badge-freemium">フリーミアム</span></td>
+      <td><strong>広告+IAP</strong></td>
+      <td><span class="rating-num">4.1</span> <span class="stars">★★★★☆</span></td>
+      <td>100K+</td>
+      <td><div class="platform-icons"><span class="platform-icon ios-icon">iOS</span><span class="platform-icon android-icon">And</span></div></td>
+      <td><small>初心者</small></td>
+      <td><small style="color:var(--text-muted)">バーチャル演奏、タブ譜、レッスン...</small></td>
+    </tr></tbody>
+    </table>
+  </div>
+  <div class="pagination" id="pagination"><button class="page-btn active" onclick="goPage(1)">1</button><button class="page-btn " onclick="goPage(2)">2</button><button class="page-btn " onclick="goPage(3)">3</button><span style="padding:7px 4px;color:var(--text-muted)">...</span><button class="page-btn " onclick="goPage(5)">5</button><button class="page-btn" onclick="goPage(2)">›</button></div>
+</section>
+
+<!-- SECTION 5: INSIGHTS -->
+<section id="insights" class="section">
+  <div class="section-title">戦略インサイト &amp; 市場機会</div>
+  <div class="section-subtitle">競合分析から導き出された新規参入のための戦略的示唆</div>
+
+  <div class="opportunity-card">
+    <h3>🚀 新規参入の機会領域</h3>
+    <ul>
+      <li>高品質AI音声認識チューナーの不在</li>
+      <li>体系的な学習カリキュラムの欠如</li>
+      <li>コミュニティ・SNS機能の未整備</li>
+      <li>日本語・アジア市場向け最適化</li>
+      <li>ハードウェア連携の高品質化</li>
+      <li>広告なしプレミアム体験の需要</li>
+    </ul>
+  </div>
+
+  <div class="insight-grid">
+    <div class="insight-card">
+      <h4>💰 価格戦略インサイト</h4>
+      <p>市場の62%が無料・フリーミアムモデルを採用。月額$4.99〜$19.99のサブスクリプション帯に競合が集中。$2.99〜$5.99の買い切りモデルも一定の需要あり。カリンバ専用アプリでは$5/月以下が競争力を持つ。</p>
+    </div>
+    <div class="insight-card">
+      <h4>🎯 差別化ポイント</h4>
+      <p>現存アプリの最大の弱点は「広告過多」と「音声認識精度の低さ」。広告なしのクリーンな体験と、精度の高いAI音声認識チューナーを組み合わせることで、明確な差別化が可能。</p>
+    </div>
+    <div class="insight-card">
+      <h4>📱 プラットフォーム戦略</h4>
+      <p>iOS・Android両対応アプリが競争優位を持つ。iOS専用アプリが多く、Android市場に機会あり。特にAndroid向け高品質カリンバ専用アプリは競合が少ない。</p>
+    </div>
+    <div class="insight-card">
+      <h4>👥 ターゲット戦略</h4>
+      <p>初心者向けアプリが市場の70%以上を占める。中級者・上級者向けの本格的な学習ツールは不足。特に「実機連携＋体系的学習」を組み合わせたアプリへの需要が高い。</p>
+    </div>
+  </div>
+
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3><span class="icon">⚠️</span> 競合の主要な弱点</h3>
+      <div class="chart-container">
+        <canvas id="weaknessChart" height="520" style="display: block; box-sizing: border-box; height: 260px; width: 631px;" width="1262"></canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <h3><span class="icon">✨</span> 推奨機能の優先度</h3>
+      <div class="chart-container">
+        <canvas id="featurePriorityChart" height="520" style="display: block; box-sizing: border-box; height: 260px; width: 631px;" width="1262"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="chart-card">
+    <h3><span class="icon">🎯</span> 推奨ポジショニング戦略</h3>
+    <div style="padding: 8px 0;">
+      <div class="progress-bar-wrap">
+        <div class="progress-label"><span>🎵 高品質AI音声認識チューナー</span><span>最優先</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:95%; background: linear-gradient(90deg, #6C63FF, #A89CFF);"></div></div>
+      </div>
+      <div class="progress-bar-wrap">
+        <div class="progress-label"><span>📚 体系的な学習カリキュラム</span><span>高優先</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:88%; background: linear-gradient(90deg, #43D9AD, #6EECD5);"></div></div>
+      </div>
+      <div class="progress-bar-wrap">
+        <div class="progress-label"><span>🚫 広告なしのクリーン体験</span><span>高優先</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:85%; background: linear-gradient(90deg, #FF6584, #FFB0C0);"></div></div>
+      </div>
+      <div class="progress-bar-wrap">
+        <div class="progress-label"><span>🌏 日本語・多言語対応</span><span>中優先</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:72%; background: linear-gradient(90deg, #FFB347, #FFD080);"></div></div>
+      </div>
+      <div class="progress-bar-wrap">
+        <div class="progress-label"><span>👥 コミュニティ・SNS機能</span><span>中優先</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:65%; background: linear-gradient(90deg, #5BC0EB, #8DD8F5);"></div></div>
+      </div>
+      <div class="progress-bar-wrap">
+        <div class="progress-label"><span>🔗 ハードウェア連携強化</span><span>中優先</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:60%; background: linear-gradient(90deg, #A89CFF, #C8C0FF);"></div></div>
+      </div>
+      <div class="progress-bar-wrap">
+        <div class="progress-label"><span>🎮 ゲーミフィケーション要素</span><span>低〜中優先</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:50%; background: linear-gradient(90deg, #43D9AD, #6EECD5);"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>カリンバアプリ 競合50社 市場分析レポート | 調査期間: 2025〜2026年 | データソース: Google Play Store, Apple App Store, 各種レビューサイト</p>
+</footer>
+
+<div class="tooltip-custom" id="tooltip"></div>
+
+<script>
+// ===== DATA =====
+const competitors = [
+  { id:1, name:"Keylimba", dev:"dvdfu", platform:["iOS","Android"], category:"バーチャル楽器", pricing:"フリーミアム", price:"$2.99(追加音源)", rating:4.8, downloads:"10M+", dlNum:10000000, target:"初心者〜中級者", features:["バーチャル演奏","ループ録音","カスタマイズ","広告なし"], region:"北米", monthSub:null },
+  { id:2, name:"Kalimba Connect", dev:"SSN Publishing", platform:["iOS","Android"], category:"バーチャル楽器・学習", pricing:"フリーミアム", price:"広告+IAP", rating:4.7, downloads:"500K+", dlNum:500000, target:"初心者〜中級者", features:["バーチャル演奏","タブ譜65万曲","デイリーチャレンジ","録音","音声認識"], region:"アジア", monthSub:null },
+  { id:3, name:"Kalimba Master", dev:"Sensor Notes Global", platform:["iOS","Android"], category:"バーチャル楽器・学習", pricing:"フリーミアム", price:"広告+IAP", rating:4.2, downloads:"100K+", dlNum:100000, target:"初心者", features:["バーチャル演奏","タブ譜","レッスン","ゲーム","多言語"], region:"アジア", monthSub:null },
+  { id:4, name:"Real Kalimba", dev:"Budali Kingsley", platform:["iOS","Android"], category:"バーチャル楽器・学習", pricing:"フリーミアム", price:"$3.99(プレミアム)", rating:4.3, downloads:"1M+", dlNum:1000000, target:"初心者", features:["フォーリングノート","タブ譜","録音","カスタマイズ"], region:"アフリカ", monthSub:null },
+  { id:5, name:"Jooleer Kalimba", dev:"杭州点音教育", platform:["iOS","Android"], category:"バーチャル楽器・学習", pricing:"サブスクリプション", price:"$4.99/月", rating:4.1, downloads:"100K+", dlNum:100000, target:"初心者〜中級者", features:["チューナー","ソングライブラリ","デイリー練習","実機連携"], region:"中国", monthSub:4.99 },
+  { id:6, name:"Smart Kalimba", dev:"CookAndroid", platform:["iOS","Android"], category:"チューナー・バーチャル楽器", pricing:"フリーミアム", price:"コード付属", rating:4.3, downloads:"100K+", dlNum:100000, target:"実機ユーザー", features:["精密チューナー","プロ音源","バーチャル演奏"], region:"アジア", monthSub:null },
+  { id:7, name:"Kalimbeo", dev:"Kalimbeo", platform:["iOS","Android"], category:"タブ譜ライブラリ", pricing:"無料", price:"無料", rating:4.4, downloads:"50K+", dlNum:50000, target:"初心者〜上級者", features:["タブ譜ライブラリ","難易度別","保存機能","ダーク/ライト"], region:"欧州", monthSub:null },
+  { id:8, name:"Kalimba Pro", dev:"MWM", platform:["iOS"], category:"バーチャル楽器", pricing:"有料", price:"$2.99", rating:4.5, downloads:"10K+", dlNum:10000, target:"リラクゼーション", features:["カリンバ・サンスラ","リバーブ","録音","広告なし"], region:"欧州", monthSub:null },
+  { id:9, name:"Kalimba Real (Sonoscore)", dev:"Sonoscore", platform:["Android"], category:"バーチャル楽器・タブ譜", pricing:"無料", price:"無料", rating:4.4, downloads:"500K+", dlNum:500000, target:"中級者〜上級者", features:["タブ譜","ユーザー作成","MIDI/PDFエクスポート"], region:"欧州", monthSub:null },
+  { id:10, name:"Joo Kalimba", dev:"Sensor Notes Global", platform:["iOS","Android"], category:"バーチャル楽器・学習", pricing:"フリーミアム", price:"広告+IAP", rating:4.1, downloads:"100K+", dlNum:100000, target:"初心者", features:["バーチャル演奏","タブ譜","レッスン","ゲーム"], region:"アジア", monthSub:null },
+  { id:11, name:"Kalimba App With Songs Numbers", dev:"SS Apps", platform:["iOS","Android"], category:"学習", pricing:"無料", price:"無料", rating:4.0, downloads:"50K+", dlNum:50000, target:"完全初心者", features:["数字タブ譜","スクラッチ学習"], region:"アジア", monthSub:null },
+  { id:12, name:"Kalimba Instrument", dev:"Virtual Acrylic", platform:["Android"], category:"バーチャル楽器", pricing:"無料", price:"無料", rating:4.0, downloads:"10K+", dlNum:10000, target:"初心者", features:["バーチャル演奏","本格音源"], region:"不明", monthSub:null },
+  { id:13, name:"Thumb Piano", dev:"Virtual Instrument", platform:["Android"], category:"バーチャル楽器", pricing:"無料", price:"無料", rating:3.9, downloads:"50K+", dlNum:50000, target:"初心者", features:["サムピアノ","マルチタッチ"], region:"不明", monthSub:null },
+  { id:14, name:"Kalimba Thumb Piano (iOS)", dev:"Alyaka Alper", platform:["iOS"], category:"バーチャル楽器", pricing:"無料", price:"無料", rating:4.2, downloads:"10K+", dlNum:10000, target:"初心者", features:["バーチャル演奏","美しいデザイン"], region:"不明", monthSub:null },
+  { id:15, name:"Kalimba! (Discovolos)", dev:"Discovolos", platform:["iOS"], category:"バーチャル楽器", pricing:"無料", price:"無料", rating:3.5, downloads:"10K+", dlNum:10000, target:"初心者", features:["バーチャル演奏"], region:"不明", monthSub:null },
+  { id:16, name:"Kalimba (Thredamp)", dev:"Thredamp", platform:["Android"], category:"バーチャル楽器", pricing:"無料", price:"無料", rating:4.1, downloads:"100K+", dlNum:100000, target:"初心者", features:["スライド演奏","マルチタッチ"], region:"不明", monthSub:null },
+  { id:17, name:"Kalimba Tuner", dev:"Independent", platform:["iOS"], category:"チューナー", pricing:"無料", price:"無料", rating:4.3, downloads:"10K+", dlNum:10000, target:"実機ユーザー", features:["カリンバ専用チューナー","カスタムチューニング"], region:"不明", monthSub:null },
+  { id:18, name:"Tunelimba", dev:"Independent", platform:["iOS"], category:"チューナー", pricing:"無料", price:"無料", rating:4.2, downloads:"5K+", dlNum:5000, target:"初心者", features:["カリンバ専用チューナー","初心者UI"], region:"不明", monthSub:null },
+  { id:19, name:"Tuner Pitched", dev:"Pitched Tuner", platform:["iOS","Android"], category:"チューナー", pricing:"フリーミアム", price:"$2.99(プロ)", rating:4.6, downloads:"1M+", dlNum:1000000, target:"全楽器ユーザー", features:["高精度チューナー","マイク連携","視覚フィードバック"], region:"欧州", monthSub:null },
+  { id:20, name:"gStrings Tuner", dev:"Cohortor", platform:["Android"], category:"チューナー", pricing:"フリーミアム", price:"$3.99(広告なし)", rating:4.5, downloads:"10M+", dlNum:10000000, target:"全楽器ユーザー", features:["クロマチックチューナー","カスタムチューニング","多楽器"], region:"欧州", monthSub:null },
+  { id:21, name:"insTuner", dev:"MWM", platform:["iOS"], category:"チューナー", pricing:"フリーミアム", price:"$4.99(プロ)", rating:4.7, downloads:"1M+", dlNum:1000000, target:"中級者〜プロ", features:["超高精度±0.1セント","ストロボモード","音叉","歴史的音律"], region:"欧州", monthSub:null },
+  { id:22, name:"Pano Tuner", dev:"Soundlim", platform:["iOS","Android"], category:"チューナー", pricing:"有料", price:"$0.99", rating:4.7, downloads:"5M+", dlNum:5000000, target:"全楽器ユーザー", features:["クロマチックチューナー","広音域","シンプルUI"], region:"アジア", monthSub:null },
+  { id:23, name:"DaTuner", dev:"Bork DSP", platform:["Android"], category:"チューナー", pricing:"フリーミアム", price:"$3.99(プロ)", rating:4.4, downloads:"5M+", dlNum:5000000, target:"全楽器ユーザー", features:["クロマチックチューナー","メトロノーム","ストロボ"], region:"欧州", monthSub:null },
+  { id:24, name:"Kalimba Lessons: Learn & Play", dev:"Independent", platform:["iOS"], category:"学習", pricing:"サブスクリプション", price:"$4.99/月", rating:4.3, downloads:"10K+", dlNum:10000, target:"初心者〜中級者", features:["タブ譜ライブラリ","週次更新","全レベル対応"], region:"不明", monthSub:4.99 },
+  { id:25, name:"GarageBand", dev:"Apple", platform:["iOS"], category:"音楽制作DAW", pricing:"無料", price:"無料", rating:4.4, downloads:"100M+", dlNum:100000000, target:"音楽制作者", features:["多仮想楽器","マルチトラック","MIDI","ループ"], region:"北米", monthSub:null },
+  { id:26, name:"Walk Band", dev:"Revontulet Soft", platform:["Android"], category:"音楽制作・バーチャル楽器", pricing:"フリーミアム", price:"プレミアム機能", rating:4.2, downloads:"50M+", dlNum:50000000, target:"音楽制作者", features:["複数楽器","マルチトラック","ドラム・ピアノ"], region:"欧州", monthSub:null },
+  { id:27, name:"Perfect Piano", dev:"Revontulet Soft", platform:["iOS","Android"], category:"バーチャル楽器（ピアノ）", pricing:"フリーミアム", price:"$19.99/月", rating:4.4, downloads:"100M+", dlNum:100000000, target:"ピアノ学習者", features:["88鍵ピアノ","学習モード","クラシック〜ポップ"], region:"欧州", monthSub:19.99 },
+  { id:28, name:"Simply Piano", dev:"JoyTunes", platform:["iOS","Android"], category:"楽器学習（ピアノ）", pricing:"サブスクリプション", price:"$17.99/月", rating:4.7, downloads:"10M+", dlNum:10000000, target:"ピアノ初心者〜中級者", features:["AI音声認識","段階的レッスン","リアルタイムフィードバック","1000曲+"], region:"北米", monthSub:17.99 },
+  { id:29, name:"Yousician", dev:"Yousician", platform:["iOS","Android"], category:"楽器学習（マルチ）", pricing:"フリーミアム", price:"$19.99/月", rating:4.4, downloads:"50M+", dlNum:50000000, target:"楽器初心者〜中級者", features:["5楽器対応","1万曲+","ゲーミフィケーション","音声認識"], region:"欧州", monthSub:19.99 },
+  { id:30, name:"Flowkey", dev:"Flowkey", platform:["iOS","Android"], category:"楽器学習（ピアノ）", pricing:"フリーミアム", price:"$19.99/月", rating:4.6, downloads:"10M+", dlNum:10000000, target:"ピアノ初心者〜中級者", features:["ウェイトモード","ビデオチュートリアル","1500曲+"], region:"欧州", monthSub:19.99 },
+  { id:31, name:"Skoove", dev:"Skoove", platform:["iOS","Android"], category:"楽器学習（ピアノ）", pricing:"フリーミアム", price:"$19.99/月", rating:4.4, downloads:"5M+", dlNum:5000000, target:"ピアノ初心者〜中級者", features:["AIフィードバック","インタラクティブレッスン","400曲+"], region:"欧州", monthSub:19.99 },
+  { id:32, name:"Kala: Learn Ukulele", dev:"Musopia", platform:["iOS","Android"], category:"楽器学習（ウクレレ）", pricing:"フリーミアム", price:"$5.99/月", rating:4.3, downloads:"1M+", dlNum:1000000, target:"ウクレレ初心者〜中級者", features:["150レッスン+","チューナー内蔵","コードライブラリ"], region:"北米", monthSub:5.99 },
+  { id:33, name:"Fender Play", dev:"Fender", platform:["iOS","Android"], category:"楽器学習（ギター）", pricing:"サブスクリプション", price:"$14.99/月", rating:4.6, downloads:"5M+", dlNum:5000000, target:"ギター初心者〜中級者", features:["ギター・ベース・ウクレレ","プロビデオ","パス学習"], region:"北米", monthSub:14.99 },
+  { id:34, name:"ThumbJam", dev:"Sonosaurus", platform:["iOS"], category:"バーチャル楽器（多楽器）", pricing:"有料", price:"$8.99", rating:4.5, downloads:"100K+", dlNum:100000, target:"音楽制作者", features:["多楽器音源","マルチタッチ","スケール設定","録音"], region:"北米", monthSub:null },
+  { id:35, name:"Guzheng Master", dev:"Sensor Notes Global", platform:["iOS","Android"], category:"バーチャル楽器（古筝）", pricing:"有料", price:"$5.48", rating:4.3, downloads:"100K+", dlNum:100000, target:"中国音楽愛好者", features:["古筝演奏","タブ譜","学習モード"], region:"アジア", monthSub:null },
+  { id:36, name:"Array Mbira", dev:"Array Music", platform:["Android"], category:"バーチャル楽器（ムビラ）", pricing:"無料", price:"無料", rating:4.1, downloads:"10K+", dlNum:10000, target:"実験的音楽愛好者", features:["マルチオクターブ","モダンアレイムビラ"], region:"欧州", monthSub:null },
+  { id:37, name:"Mbira (iOS)", dev:"Independent", platform:["iOS"], category:"バーチャル楽器（ムビラ）", pricing:"無料", price:"無料", rating:3.8, downloads:"5K+", dlNum:5000, target:"アフリカ音楽愛好者", features:["ムビラシミュレーター","楽器解説"], region:"不明", monthSub:null },
+  { id:38, name:"Kalimba ∞ (MWM)", dev:"MWM", platform:["iOS"], category:"バーチャル楽器", pricing:"無料", price:"無料", rating:4.3, downloads:"50K+", dlNum:50000, target:"リラクゼーション", features:["カリンバ・サンスラ","リバーブ","ロ-ファイ"], region:"欧州", monthSub:null },
+  { id:39, name:"Kalimba score editor Plus", dev:"Independent", platform:["Android"], category:"楽譜エディター", pricing:"有料", price:"$2.99", rating:4.0, downloads:"5K+", dlNum:5000, target:"中級者〜上級者", features:["楽譜作成・編集","タブ譜エクスポート"], region:"不明", monthSub:null },
+  { id:40, name:"Kalimbist", dev:"Kalimbist", platform:["Web"], category:"タブ譜エディター（Web）", pricing:"無料", price:"無料", rating:null, downloads:"N/A", dlNum:0, target:"中級者〜上級者", features:["タブ譜作成・共有","コミュニティ"], region:"不明", monthSub:null },
+  { id:41, name:"Kalimba Online", dev:"Kalimba Online", platform:["Web"], category:"バーチャル楽器（Web）", pricing:"無料", price:"無料", rating:null, downloads:"N/A", dlNum:0, target:"初心者", features:["ブラウザ演奏","シンプルUI"], region:"不明", monthSub:null },
+  { id:42, name:"Drum Pad Machine", dev:"Easybrain", platform:["iOS","Android"], category:"バーチャル楽器（ドラム）", pricing:"フリーミアム", price:"プレミアム機能", rating:4.1, downloads:"50M+", dlNum:50000000, target:"ビートメーカー", features:["ドラムパッド","ビートメーカー","多音源"], region:"欧州", monthSub:null },
+  { id:43, name:"My Piano Phone", dev:"SONLAM", platform:["Android"], category:"バーチャル楽器（ピアノ）", pricing:"フリーミアム", price:"プレミアム機能", rating:4.6, downloads:"10M+", dlNum:10000000, target:"ピアノ初心者", features:["ピアノシミュレーター","学習モード","録音"], region:"アジア", monthSub:null },
+  { id:44, name:"Sansula App (HOKEMA)", dev:"HOKEMA", platform:["iOS"], category:"バーチャル楽器（サンスラ）", pricing:"無料", price:"無料", rating:4.1, downloads:"5K+", dlNum:5000, target:"サンスラユーザー", features:["サンスラ演奏","チューニング練習"], region:"欧州", monthSub:null },
+  { id:45, name:"Kalimba - Thumb Piano (iOS 2026)", dev:"Independent", platform:["iOS"], category:"バーチャル楽器", pricing:"無料", price:"無料", rating:4.0, downloads:"5K+", dlNum:5000, target:"初心者", features:["バーチャル演奏","伝統楽器体験"], region:"不明", monthSub:null },
+  { id:46, name:"Kalimba Thumb Piano (Google Play)", dev:"Eritron", platform:["Android"], category:"バーチャル楽器", pricing:"無料", price:"無料", rating:4.1, downloads:"100K+", dlNum:100000, target:"初心者", features:["バーチャル演奏","本格音源"], region:"不明", monthSub:null },
+  { id:47, name:"Complete Ear Trainer", dev:"Binary Guilt Software", platform:["iOS","Android"], category:"音楽理論・耳トレーニング", pricing:"フリーミアム", price:"$9.99(フル版)", rating:4.7, downloads:"1M+", dlNum:1000000, target:"音楽学習者", features:["音程認識","和音認識","リズムトレーニング"], region:"北米", monthSub:null },
+  { id:48, name:"Note Rush", dev:"Thomas Grayston", platform:["iOS","Android"], category:"音楽理論・楽譜読み", pricing:"有料", price:"$32.99", rating:4.8, downloads:"100K+", dlNum:100000, target:"楽譜学習者", features:["楽譜読み練習","音符認識ゲーム"], region:"欧州", monthSub:null },
+  { id:49, name:"Loog Guitar", dev:"Loog Guitars", platform:["iOS","Android"], category:"楽器学習（ギター）", pricing:"フリーミアム", price:"プレミアム", rating:4.3, downloads:"500K+", dlNum:500000, target:"子供・初心者", features:["ギター学習","フラッシュカード","ゲーミフィケーション"], region:"北米", monthSub:null },
+  { id:50, name:"Cadence: Guitar Theory", dev:"Antoine PIZON", platform:["iOS","Android"], category:"音楽理論", pricing:"フリーミアム", price:"プレミアム", rating:4.4, downloads:"500K+", dlNum:500000, target:"ギター中級者", features:["ギター理論","コード・スケール","インタラクティブ練習"], region:"欧州", monthSub:null }
+];
+
+// ===== SECTION NAVIGATION =====
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ===== CHART COLORS =====
+const COLORS = ['#6C63FF','#FF6584','#43D9AD','#FFB347','#5BC0EB','#A89CFF','#FF9F7F','#7FD9C0','#FFD080','#90D5F5'];
+const COLORS_ALPHA = COLORS.map(c => c + 'CC');
+
+// ===== CHART 1: Category Donut =====
+function initCategoryChart() {
+  const cats = {};
+  competitors.forEach(c => {
+    const cat = c.category.split('・')[0].split('（')[0];
+    cats[cat] = (cats[cat] || 0) + 1;
+  });
+  const labels = Object.keys(cats);
+  const data = Object.values(cats);
+  new Chart(document.getElementById('categoryChart'), {
+    type: 'doughnut',
+    data: { labels, datasets: [{ data, backgroundColor: COLORS, borderWidth: 2, borderColor: '#fff' }] },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'right', labels: { font: { size: 11 }, padding: 10 } },
+        tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${ctx.raw}アプリ (${Math.round(ctx.raw/50*100)}%)` } }
+      }
+    }
+  });
+}
+
+// ===== CHART 2: Monetization =====
+function initMonetizationChart() {
+  const models = { '無料': 0, 'フリーミアム': 0, '有料（買い切り）': 0, 'サブスクリプション': 0 };
+  competitors.forEach(c => {
+    if (c.pricing === '無料') models['無料']++;
+    else if (c.pricing === 'フリーミアム') models['フリーミアム']++;
+    else if (c.pricing === '有料') models['有料（買い切り）']++;
+    else if (c.pricing === 'サブスクリプション') models['サブスクリプション']++;
+  });
+  new Chart(document.getElementById('monetizationChart'), {
+    type: 'pie',
+    data: {
+      labels: Object.keys(models),
+      datasets: [{ data: Object.values(models), backgroundColor: ['#43D9AD','#6C63FF','#FF6584','#FFB347'], borderWidth: 2, borderColor: '#fff' }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'bottom', labels: { font: { size: 11 }, padding: 12 } },
+        tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${ctx.raw}アプリ (${Math.round(ctx.raw/50*100)}%)` } }
+      }
+    }
+  });
+}
+
+// ===== CHART 3: Platform =====
+function initPlatformChart() {
+  let ios = 0, android = 0, both = 0, web = 0;
+  competitors.forEach(c => {
+    if (c.platform.includes('Web')) web++;
+    else if (c.platform.includes('iOS') && c.platform.includes('Android')) both++;
+    else if (c.platform.includes('iOS')) ios++;
+    else if (c.platform.includes('Android')) android++;
+  });
+  new Chart(document.getElementById('platformChart'), {
+    type: 'bar',
+    data: {
+      labels: ['iOS + Android', 'Androidのみ', 'iOSのみ', 'Webのみ'],
+      datasets: [{
+        label: 'アプリ数',
+        data: [both, android, ios, web],
+        backgroundColor: ['#6C63FF','#43D9AD','#FF6584','#FFB347'],
+        borderRadius: 8
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        y: { beginAtZero: true, grid: { color: '#F0F0F8' }, ticks: { stepSize: 5 } },
+        x: { grid: { display: false } }
+      }
+    }
+  });
+}
+
+// ===== CHART 4: Rating by Category =====
+function initRatingChart() {
+  const catRatings = {};
+  const catCounts = {};
+  competitors.forEach(c => {
+    if (!c.rating) return;
+    const cat = c.category.split('・')[0].split('（')[0];
+    catRatings[cat] = (catRatings[cat] || 0) + c.rating;
+    catCounts[cat] = (catCounts[cat] || 0) + 1;
+  });
+  const labels = Object.keys(catRatings);
+  const data = labels.map(l => (catRatings[l] / catCounts[l]).toFixed(2));
+  new Chart(document.getElementById('ratingChart'), {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [{
+        label: '平均評価',
+        data,
+        backgroundColor: COLORS_ALPHA,
+        borderColor: COLORS,
+        borderWidth: 2,
+        borderRadius: 8
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      indexAxis: 'y',
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { min: 3.5, max: 5, grid: { color: '#F0F0F8' } },
+        y: { grid: { display: false }, ticks: { font: { size: 10 } } }
+      }
+    }
+  });
+}
+
+// ===== CHART 5: Downloads TOP10 =====
+function initDownloadsChart() {
+  const sorted = [...competitors].filter(c => c.dlNum > 0).sort((a,b) => b.dlNum - a.dlNum).slice(0,10);
+  new Chart(document.getElementById('downloadsChart'), {
+    type: 'bar',
+    data: {
+      labels: sorted.map(c => c.name.length > 18 ? c.name.substring(0,18)+'...' : c.name),
+      datasets: [{
+        label: 'ダウンロード数',
+        data: sorted.map(c => c.dlNum),
+        backgroundColor: COLORS_ALPHA,
+        borderColor: COLORS,
+        borderWidth: 2,
+        borderRadius: 8
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => ` ${ctx.raw.toLocaleString()}DL` } }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          grid: { color: '#F0F0F8' },
+          ticks: { callback: v => v >= 1000000 ? (v/1000000)+'M' : v >= 1000 ? (v/1000)+'K' : v }
+        },
+        x: { grid: { display: false }, ticks: { font: { size: 10 } } }
+      }
+    }
+  });
+}
+
+// ===== CHART 6: Price Distribution =====
+function initPriceDistChart() {
+  const bands = { '無料': 0, '$0.01〜$2.99': 0, '$3.00〜$5.99': 0, '$6.00〜$9.99': 0, '$10以上': 0 };
+  competitors.forEach(c => {
+    if (c.pricing === '無料') { bands['無料']++; return; }
+    const priceMatch = c.price.match(/\$(\d+\.?\d*)/);
+    if (!priceMatch) return;
+    const p = parseFloat(priceMatch[1]);
+    if (p === 0) bands['無料']++;
+    else if (p < 3) bands['$0.01〜$2.99']++;
+    else if (p < 6) bands['$3.00〜$5.99']++;
+    else if (p < 10) bands['$6.00〜$9.99']++;
+    else bands['$10以上']++;
+  });
+  new Chart(document.getElementById('priceDistChart'), {
+    type: 'doughnut',
+    data: {
+      labels: Object.keys(bands),
+      datasets: [{ data: Object.values(bands), backgroundColor: ['#43D9AD','#6C63FF','#FF6584','#FFB347','#5BC0EB'], borderWidth: 2, borderColor: '#fff' }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'bottom', labels: { font: { size: 11 }, padding: 10 } }
+      }
+    }
+  });
+}
+
+// ===== CHART 7: Target Audience =====
+function initTargetChart() {
+  const targets = {};
+  competitors.forEach(c => {
+    const t = c.target;
+    targets[t] = (targets[t] || 0) + 1;
+  });
+  const sorted = Object.entries(targets).sort((a,b) => b[1]-a[1]).slice(0,8);
+  new Chart(document.getElementById('targetChart'), {
+    type: 'bar',
+    data: {
+      labels: sorted.map(e => e[0]),
+      datasets: [{
+        label: 'アプリ数',
+        data: sorted.map(e => e[1]),
+        backgroundColor: COLORS_ALPHA,
+        borderColor: COLORS,
+        borderWidth: 2,
+        borderRadius: 8
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      indexAxis: 'y',
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { beginAtZero: true, grid: { color: '#F0F0F8' } },
+        y: { grid: { display: false }, ticks: { font: { size: 10 } } }
+      }
+    }
+  });
+}
+
+// ===== FEATURE PROGRESS =====
+function initFeatureProgress() {
+  const features = {
+    'バーチャル演奏機能': 0,
+    'チューナー機能': 0,
+    '学習・レッスン機能': 0,
+    '録音機能': 0,
+    'タブ譜ライブラリ': 0,
+    'ゲーミフィケーション': 0,
+    '広告なし': 0,
+    '実機連携': 0,
+    'コミュニティ機能': 0,
+    'AI・音声認識': 0
+  };
+  competitors.forEach(c => {
+    const f = c.features.join(' ');
+    if (f.includes('演奏') || f.includes('シミュレーター')) features['バーチャル演奏機能']++;
+    if (f.includes('チューナー') || f.includes('チューニング')) features['チューナー機能']++;
+    if (f.includes('レッスン') || f.includes('学習') || f.includes('練習')) features['学習・レッスン機能']++;
+    if (f.includes('録音')) features['録音機能']++;
+    if (f.includes('タブ') || f.includes('ライブラリ')) features['タブ譜ライブラリ']++;
+    if (f.includes('ゲーム') || f.includes('チャレンジ') || f.includes('ゲーミ')) features['ゲーミフィケーション']++;
+    if (f.includes('広告なし')) features['広告なし']++;
+    if (f.includes('実機') || f.includes('連携')) features['実機連携']++;
+    if (f.includes('コミュニティ') || f.includes('共有') || f.includes('ランキング')) features['コミュニティ機能']++;
+    if (f.includes('AI') || f.includes('音声認識')) features['AI・音声認識']++;
+  });
+  const container = document.getElementById('featureProgress');
+  const colors = ['#6C63FF','#43D9AD','#FF6584','#FFB347','#5BC0EB','#A89CFF','#FF9F7F','#7FD9C0','#FFD080','#90D5F5'];
+  Object.entries(features).sort((a,b)=>b[1]-a[1]).forEach(([key, val], i) => {
+    const pct = Math.round(val / 50 * 100);
+    container.innerHTML += `
+      <div class="progress-bar-wrap">
+        <div class="progress-label"><span>${key}</span><span>${val}/50アプリ (${pct}%)</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:${pct}%; background: linear-gradient(90deg, ${colors[i]}, ${colors[i]}99);"></div></div>
+      </div>`;
+  });
+}
+
+// ===== CHART 8: Sub Price Comparison =====
+function initSubPriceChart() {
+  const subApps = competitors.filter(c => c.monthSub !== null).sort((a,b) => a.monthSub - b.monthSub);
+  new Chart(document.getElementById('subPriceChart'), {
+    type: 'bar',
+    data: {
+      labels: subApps.map(c => c.name.length > 14 ? c.name.substring(0,14)+'...' : c.name),
+      datasets: [{
+        label: '月額（$）',
+        data: subApps.map(c => c.monthSub),
+        backgroundColor: subApps.map((c,i) => COLORS_ALPHA[i % COLORS.length]),
+        borderColor: subApps.map((c,i) => COLORS[i % COLORS.length]),
+        borderWidth: 2,
+        borderRadius: 8
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => ` $${ctx.raw}/月` } }
+      },
+      scales: {
+        y: { beginAtZero: true, grid: { color: '#F0F0F8' }, ticks: { callback: v => '$'+v } },
+        x: { grid: { display: false }, ticks: { font: { size: 10 } } }
+      }
+    }
+  });
+}
+
+// ===== CHART 9: Dev Region =====
+function initDevRegionChart() {
+  const regions = {};
+  competitors.forEach(c => { regions[c.region] = (regions[c.region] || 0) + 1; });
+  new Chart(document.getElementById('devRegionChart'), {
+    type: 'polarArea',
+    data: {
+      labels: Object.keys(regions),
+      datasets: [{ data: Object.values(regions), backgroundColor: COLORS_ALPHA, borderColor: COLORS, borderWidth: 2 }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'right', labels: { font: { size: 11 } } } }
+    }
+  });
+}
+
+// ===== CHART 10: Positioning Scatter =====
+function initPositioningChart() {
+  const catColors = {
+    'バーチャル楽器': '#6C63FF',
+    'チューナー': '#43D9AD',
+    '学習': '#FF6584',
+    '楽器学習': '#FFB347',
+    '音楽制作': '#5BC0EB',
+    'タブ譜': '#A89CFF',
+    '楽譜': '#FF9F7F',
+    '音楽理論': '#7FD9C0',
+    'その他': '#FFD080'
+  };
+  // Feature richness score (0-10)
+  const featureScore = (c) => {
+    let score = c.features.length;
+    if (c.features.some(f => f.includes('AI') || f.includes('音声認識'))) score += 2;
+    if (c.features.some(f => f.includes('実機') || f.includes('連携'))) score += 1.5;
+    if (c.features.some(f => f.includes('コミュニティ') || f.includes('共有'))) score += 1;
+    return Math.min(score, 10);
+  };
+  // Price score (0-10, higher = more expensive)
+  const priceScore = (c) => {
+    if (c.pricing === '無料') return 0;
+    if (c.monthSub) return Math.min(c.monthSub / 2, 10);
+    const m = c.price.match(/\$(\d+\.?\d*)/);
+    if (m) return Math.min(parseFloat(m[1]) / 3, 10);
+    return 2;
+  };
+  const datasets = [];
+  const catGroups = {};
+  competitors.forEach(c => {
+    const cat = c.category.split('・')[0].split('（')[0];
+    const color = catColors[cat] || catColors['その他'];
+    if (!catGroups[cat]) catGroups[cat] = { label: cat, data: [], backgroundColor: color + 'BB', borderColor: color, borderWidth: 1.5, pointRadius: 7, pointHoverRadius: 10 };
+    catGroups[cat].data.push({ x: priceScore(c), y: featureScore(c), name: c.name, pricing: c.pricing, price: c.price });
+  });
+  Object.values(catGroups).forEach(g => datasets.push(g));
+  new Chart(document.getElementById('positioningChart'), {
+    type: 'scatter',
+    data: { datasets },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'right', labels: { font: { size: 11 }, padding: 8, usePointStyle: true } },
+        tooltip: {
+          callbacks: {
+            label: ctx => {
+              const d = ctx.raw;
+              return [`📱 ${d.name}`, `💰 ${d.pricing} (${d.price})`, `機能スコア: ${d.y.toFixed(1)}/10`, `価格スコア: ${d.x.toFixed(1)}/10`];
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          title: { display: true, text: '← 低価格　　　　　　　高価格 →', font: { size: 12 } },
+          min: -0.5, max: 10.5,
+          grid: { color: '#F0F0F8' }
+        },
+        y: {
+          title: { display: true, text: '↑ 機能が豊富', font: { size: 12 } },
+          min: -0.5, max: 12,
+          grid: { color: '#F0F0F8' }
+        }
+      }
+    }
+  });
+}
+
+// ===== CHART 11: Segment =====
+function initSegmentChart() {
+  const segments = {
+    'カリンバ専用\nバーチャル楽器': 0,
+    'カリンバ専用\nチューナー': 0,
+    'カリンバ専用\n学習': 0,
+    '汎用\n楽器学習': 0,
+    '汎用\n音楽制作': 0,
+    '関連楽器\nシミュレーター': 0
+  };
+  competitors.forEach(c => {
+    const name = c.name.toLowerCase();
+    const cat = c.category;
+    if ((name.includes('kalimba') || name.includes('カリンバ') || name.includes('keylimba') || name.includes('joo') || name.includes('jooleer')) && cat.includes('チューナー')) segments['カリンバ専用\nチューナー']++;
+    else if ((name.includes('kalimba') || name.includes('カリンバ') || name.includes('keylimba') || name.includes('joo') || name.includes('jooleer')) && cat.includes('学習')) segments['カリンバ専用\n学習']++;
+    else if (name.includes('kalimba') || name.includes('カリンバ') || name.includes('keylimba') || name.includes('joo') || name.includes('jooleer') || name.includes('thumb')) segments['カリンバ専用\nバーチャル楽器']++;
+    else if (cat.includes('楽器学習') || cat.includes('学習')) segments['汎用\n楽器学習']++;
+    else if (cat.includes('音楽制作') || cat.includes('DAW')) segments['汎用\n音楽制作']++;
+    else segments['関連楽器\nシミュレーター']++;
+  });
+  new Chart(document.getElementById('segmentChart'), {
+    type: 'doughnut',
+    data: {
+      labels: Object.keys(segments),
+      datasets: [{ data: Object.values(segments), backgroundColor: COLORS, borderWidth: 2, borderColor: '#fff' }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'bottom', labels: { font: { size: 10 }, padding: 8 } }
+      }
+    }
+  });
+}
+
+// ===== CHART 12: Competition Intensity =====
+function initCompetitionChart() {
+  new Chart(document.getElementById('competitionChart'), {
+    type: 'radar',
+    data: {
+      labels: ['バーチャル楽器', 'チューナー', '学習コンテンツ', '価格競争', 'UI/UX', 'コミュニティ'],
+      datasets: [
+        {
+          label: '競合強度',
+          data: [9, 7, 6, 8, 5, 3],
+          backgroundColor: 'rgba(108,99,255,0.15)',
+          borderColor: '#6C63FF',
+          borderWidth: 2,
+          pointBackgroundColor: '#6C63FF'
+        },
+        {
+          label: '市場機会',
+          data: [4, 6, 8, 5, 9, 10],
+          backgroundColor: 'rgba(67,217,173,0.15)',
+          borderColor: '#43D9AD',
+          borderWidth: 2,
+          pointBackgroundColor: '#43D9AD'
+        }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'bottom' } },
+      scales: {
+        r: {
+          min: 0, max: 10,
+          ticks: { stepSize: 2, font: { size: 9 } },
+          grid: { color: '#E3E6F0' },
+          pointLabels: { font: { size: 10 } }
+        }
+      }
+    }
+  });
+}
+
+// ===== CHART 13: Rating vs Download =====
+function initRatingDownloadChart() {
+  const catColors2 = ['#6C63FF','#FF6584','#43D9AD','#FFB347','#5BC0EB','#A89CFF','#FF9F7F','#7FD9C0'];
+  const cats = [...new Set(competitors.map(c => c.category.split('・')[0].split('（')[0]))];
+  const datasets = cats.map((cat, i) => ({
+    label: cat,
+    data: competitors.filter(c => c.category.startsWith(cat) && c.rating && c.dlNum > 0).map(c => ({
+      x: c.rating, y: Math.log10(c.dlNum + 1), name: c.name, dl: c.downloads
+    })),
+    backgroundColor: catColors2[i % catColors2.length] + 'BB',
+    borderColor: catColors2[i % catColors2.length],
+    borderWidth: 1.5,
+    pointRadius: 7
+  }));
+  new Chart(document.getElementById('ratingDownloadChart'), {
+    type: 'scatter',
+    data: { datasets },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'right', labels: { font: { size: 10 }, padding: 6, usePointStyle: true } },
+        tooltip: {
+          callbacks: {
+            label: ctx => [`📱 ${ctx.raw.name}`, `⭐ 評価: ${ctx.raw.x}`, `📥 DL: ${ctx.raw.dl}`]
+          }
+        }
+      },
+      scales: {
+        x: { title: { display: true, text: '評価スコア' }, min: 3.3, max: 5.1, grid: { color: '#F0F0F8' } },
+        y: { title: { display: true, text: 'ダウンロード数（対数）' }, grid: { color: '#F0F0F8' }, ticks: { callback: v => ['1K','10K','100K','1M','10M','100M'][Math.round(v)-3] || '' } }
+      }
+    }
+  });
+}
+
+// ===== CHART 14: Weakness =====
+function initWeaknessChart() {
+  new Chart(document.getElementById('weaknessChart'), {
+    type: 'bar',
+    data: {
+      labels: ['広告過多', '音声認識精度低', '機能が限定的', '高価格', '学習コンテンツ不足', 'UI/UX問題', 'プラットフォーム限定'],
+      datasets: [{
+        label: '該当アプリ数',
+        data: [18, 12, 15, 8, 10, 7, 14],
+        backgroundColor: '#FF6584BB',
+        borderColor: '#FF6584',
+        borderWidth: 2,
+        borderRadius: 8
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      indexAxis: 'y',
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { beginAtZero: true, grid: { color: '#F0F0F8' } },
+        y: { grid: { display: false }, ticks: { font: { size: 10 } } }
+      }
+    }
+  });
+}
+
+// ===== CHART 15: Feature Priority =====
+function initFeaturePriorityChart() {
+  new Chart(document.getElementById('featurePriorityChart'), {
+    type: 'radar',
+    data: {
+      labels: ['AI音声認識\nチューナー', '体系的\n学習', '広告なし\n体験', '日本語\n対応', 'コミュニティ\n機能', 'ハードウェア\n連携', 'ゲーミ\nフィケーション'],
+      datasets: [{
+        label: '推奨優先度',
+        data: [9.5, 8.8, 8.5, 7.2, 6.5, 6.0, 5.0],
+        backgroundColor: 'rgba(108,99,255,0.2)',
+        borderColor: '#6C63FF',
+        borderWidth: 2.5,
+        pointBackgroundColor: '#6C63FF',
+        pointRadius: 5
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        r: {
+          min: 0, max: 10,
+          ticks: { stepSize: 2, font: { size: 9 } },
+          grid: { color: '#E3E6F0' },
+          pointLabels: { font: { size: 9 } }
+        }
+      }
+    }
+  });
+}
+
+// ===== TABLE =====
+let currentPage = 1;
+const rowsPerPage = 10;
+let filteredData = [...competitors];
+let sortCol = 0;
+let sortAsc = true;
+
+function getPricingBadge(pricing) {
+  const map = { '無料': 'badge-free', 'フリーミアム': 'badge-freemium', '有料': 'badge-paid', 'サブスクリプション': 'badge-sub' };
+  return `<span class="badge ${map[pricing] || 'badge-freemium'}">${pricing}</span>`;
+}
+
+function getPlatformIcons(platforms) {
+  return platforms.map(p => {
+    if (p === 'iOS') return '<span class="platform-icon ios-icon">iOS</span>';
+    if (p === 'Android') return '<span class="platform-icon android-icon">And</span>';
+    return '<span class="platform-icon web-icon">Web</span>';
+  }).join('');
+}
+
+function getStars(rating) {
+  if (!rating) return '<span style="color:#ccc">N/A</span>';
+  const full = Math.floor(rating);
+  const half = rating % 1 >= 0.5 ? 1 : 0;
+  return `<span class="rating-num">${rating}</span> <span class="stars">${'★'.repeat(full)}${half ? '½' : ''}${'☆'.repeat(5-full-half)}</span>`;
+}
+
+function renderTable() {
+  const tbody = document.getElementById('tableBody');
+  const start = (currentPage - 1) * rowsPerPage;
+  const end = start + rowsPerPage;
+  const pageData = filteredData.slice(start, end);
+  tbody.innerHTML = pageData.map(c => `
+    <tr>
+      <td><strong>${c.id}</strong></td>
+      <td><strong>${c.name}</strong><br><small style="color:var(--text-muted)">${c.dev}</small></td>
+      <td><span class="badge badge-cat">${c.category}</span></td>
+      <td>${getPricingBadge(c.pricing)}</td>
+      <td><strong>${c.price}</strong></td>
+      <td>${getStars(c.rating)}</td>
+      <td>${c.downloads}</td>
+      <td><div class="platform-icons">${getPlatformIcons(c.platform)}</div></td>
+      <td><small>${c.target}</small></td>
+      <td><small style="color:var(--text-muted)">${c.features.slice(0,3).join('、')}${c.features.length > 3 ? '...' : ''}</small></td>
+    </tr>`).join('');
+  document.getElementById('resultCount').textContent = `${filteredData.length}件中 ${start+1}〜${Math.min(end, filteredData.length)}件を表示`;
+  renderPagination();
+}
+
+function renderPagination() {
+  const totalPages = Math.ceil(filteredData.length / rowsPerPage);
+  const pg = document.getElementById('pagination');
+  let html = '';
+  if (currentPage > 1) html += `<button class="page-btn" onclick="goPage(${currentPage-1})">‹</button>`;
+  for (let i = 1; i <= totalPages; i++) {
+    if (i === 1 || i === totalPages || Math.abs(i - currentPage) <= 2) {
+      html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="goPage(${i})">${i}</button>`;
+    } else if (Math.abs(i - currentPage) === 3) {
+      html += '<span style="padding:7px 4px;color:var(--text-muted)">...</span>';
+    }
+  }
+  if (currentPage < totalPages) html += `<button class="page-btn" onclick="goPage(${currentPage+1})">›</button>`;
+  pg.innerHTML = html;
+}
+
+function goPage(p) { currentPage = p; renderTable(); }
+
+function filterTable() {
+  const search = document.getElementById('searchBox').value.toLowerCase();
+  const cat = document.getElementById('categoryFilter').value;
+  const pricing = document.getElementById('pricingFilter').value;
+  const platform = document.getElementById('platformFilter').value;
+  filteredData = competitors.filter(c => {
+    const matchSearch = !search || c.name.toLowerCase().includes(search) || c.dev.toLowerCase().includes(search) || c.features.some(f => f.toLowerCase().includes(search));
+    const matchCat = !cat || c.category.includes(cat);
+    const matchPricing = !pricing || c.pricing.includes(pricing);
+    const matchPlatform = !platform || c.platform.includes(platform);
+    return matchSearch && matchCat && matchPricing && matchPlatform;
+  });
+  currentPage = 1;
+  renderTable();
+}
+
+function sortTable(col) {
+  if (sortCol === col) sortAsc = !sortAsc;
+  else { sortCol = col; sortAsc = true; }
+  const keys = ['id','name','category','pricing','price','rating','dlNum'];
+  filteredData.sort((a, b) => {
+    let va = a[keys[col]], vb = b[keys[col]];
+    if (va === null) va = -1;
+    if (vb === null) vb = -1;
+    if (typeof va === 'string') va = va.toLowerCase();
+    if (typeof vb === 'string') vb = vb.toLowerCase();
+    return sortAsc ? (va > vb ? 1 : -1) : (va < vb ? 1 : -1);
+  });
+  renderTable();
+}
+
+// ===== INIT =====
+window.addEventListener('DOMContentLoaded', () => {
+  initCategoryChart();
+  initMonetizationChart();
+  initPlatformChart();
+  initRatingChart();
+  initDownloadsChart();
+  initPriceDistChart();
+  initTargetChart();
+  initFeatureProgress();
+  initSubPriceChart();
+  initDevRegionChart();
+  initPositioningChart();
+  initSegmentChart();
+  initCompetitionChart();
+  initRatingDownloadChart();
+  initWeaknessChart();
+  initFeaturePriorityChart();
+  renderTable();
+});
+</script>
+
+
+</body></html>
